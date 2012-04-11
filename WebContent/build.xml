@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+ 
+<project name="SampleMVCLogin" default="all" basedir=".">
+	<description>
+            description
+    </description>
+
+	<target name="init" description="--> description">
+		<property name="server.dir" value="D:/Tomcat 5.5/webapps" />   
+		<property name="build.dir"   value="build"/>
+		<property name="classes.dir" value="${build.dir}/classes"/>
+		<property name="project.dir" value="${server.dir}/SampleMVCLogin"/> 
+		<property name="basepackage.dir" value="C:/Documents and Settings/Esakki Raj/workspace/SampleMVCLogin"/> 
+		<property name="conf.dir" value="D:/Tomcat 5.5/conf"/> 
+		
+	</target>
+  
+	<target name="clean" depends="init">
+		<delete file="${project.dir}" />
+		<delete dir="${project.dir}" />
+		
+	</target>
+	 
+	<target name="copy_files"> 
+		<copy todir="${project.dir}" filtering="true">
+			<fileset dir="">
+				<include name="**/*.html*" />
+				<include name="**/*.jsp*" />
+			 
+			</fileset>
+		</copy>
+		<copy todir="${project.dir}/js" filtering="true">
+			<fileset dir="js">
+				<include name="**/*.js" />
+				 
+			</fileset>
+		</copy>
+		<copy todir="${project.dir}/css" filtering="true">
+			<fileset dir="css">
+				<include name="**/*.css" />
+				 
+			</fileset>
+		</copy>
+		 
+		<copy todir="${project.dir}/images" filtering="true">
+			<fileset dir="images">
+				<include name="**/*.*" />
+				 
+			</fileset>
+		</copy>
+
+		<copy todir="${project.dir}" filtering="true">
+			<fileset dir="">
+				<include name="**/*.jar" /> 
+				 
+			</fileset>
+		</copy>
+ 
+		<copy todir="${project.dir}" filtering="true" id="classpath">
+					<fileset dir="">
+						<include name="**/*.xml"/> 
+						 
+					</fileset>
+				</copy>
+
+		<copy todir="D:/Tomcat 5.5/webapps/SampleMVCLogin/WEB-INF/classes" filtering="true">
+		<fileset dir="C:/Documents and Settings/Esakki Raj/wo-rkspace/SampleMVCLogin/build/classes">
+							 
+								<include name="**/*.*"/> 
+								 
+							</fileset>
+						</copy>
+
+		<copy todir="${project.dir}" filtering="true">
+			<fileset dir="">
+				<include name="**/*.tld" />
+				 
+			</fileset>
+		</copy>
+ 
+	</target>
+	
+	<target name="all" depends="init,clean,copy_files"/>
+</project>
+

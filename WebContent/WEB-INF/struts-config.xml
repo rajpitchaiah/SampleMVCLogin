@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+
+<struts-config>
+
+    <form-beans>
+        <form-bean name="LoginForm" type="com.centris.form.LoginForm"/>  
+         
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+    
+    </global-forwards>
+
+
+    <action-mappings>
+    	
+       
+        <action input="/jsp/login.jsp" name="LoginForm" path="/Login" scope="session" type="com.centris.action.LoginAction">
+            <forward name="success" path="/jsp/Home_Page.jsp" />
+            <forward name="failure" path="/jsp/failure.jsp" />
+        </action>
+        
+        </action-mappings>
+          
+          
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/> 
+
+    <message-resources parameter="com/centris/properties/application"/>
+     
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    
+    
+    <!-- ========================= Validator plugin ================================= -->
+    
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+   
+</struts-config>
